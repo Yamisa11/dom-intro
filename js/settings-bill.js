@@ -11,7 +11,7 @@ var criticalSetting;
 var warningSetting;
 
 settingAddBtn.addEventListener("click", function(){
-  
+  var totalSettings = document.querySelector(".totalSettings");
 
    callCostSetting = document.querySelector(".callCostSetting").value;
    smsCostSetting = document.querySelector(".smsCostSetting").value;
@@ -22,9 +22,18 @@ settingAddBtn.addEventListener("click", function(){
  if (settingsTotalBill!= 0) {
   if (criticalSetting> settingsTotalBill) {
     radioAdd.disabled = false;
+    totalSettings.classList.remove("danger");
+    totalSettings.classList.add("warning")
   }else {alert("critical level cannot be lower than current Total")}
+  if (warningSetting> settingsTotalBill) {
+    totalSettings.classList.remove("warning")
+  }
  }
 
+ if (warningSetting>criticalSetting) {
+  alert("warning level cannot be more than critical level")
+  radioAdd.disabled = true;
+ }
   return callCostSetting, smsCostSetting,criticalSetting,warningSetting
 })
 
