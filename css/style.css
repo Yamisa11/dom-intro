@@ -16,12 +16,9 @@
   font-weight: bold;
 }
 
+
 .total {
   font-weight: bold;
   font-size: 2em;
 }
-.refresh{
-  width: 90px !important;
-  padding: 0px 10px !important;
-  background-color: rgb(33, 33, 104) !important;
-}
+

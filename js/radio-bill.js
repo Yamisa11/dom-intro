@@ -6,25 +6,7 @@ var totalBillTwo = 0;
     var totalCalls = 0;
     
 
-refreshRadio.addEventListener("click",function() {
-  // var checkedRadioBtn= document.querySelector("input[name='billItemType']").reset();
-  //create a variable that will keep track of the total bill
-  
-  var callTotalTwo = document.querySelector(".callTotalTwo");
-  var smsTotalTwo = document.querySelector(".smsTotalTwo");
-  var totalTwo = document.querySelector(".totalTwo");
 
-
-  callTotalTwo.innerHTML = "0.00";
-  smsTotalTwo.innerHTML = "0.00";
-  totalTwo.innerHTML = "0.00";
-   totalBillTwo = 0;
-     totalSms = 0;
-   totalCalls = 0;
-    
-
-    
-    })
     
 function radioTextBillTotal(){
 // get a reference to the textbox where the bill type is to be entered

@@ -5,23 +5,7 @@ var totalBill = 0;
     var smsTotal = 0;
     var callTotal = 0;
     
-refreshText.addEventListener("click",function() {
-  var callTotalOne = document.querySelector(".callTotalOne");
-var smsTotalOne = document.querySelector(".smsTotalOne");
-var totalOne = document.querySelector(".totalOne");
-var billType = document.querySelector(".billTypeText").value;
 
-callTotalOne.innerHTML = "0.00";
-smsTotalOne.innerHTML = "0.00";
-totalOne.innerHTML = "0.00";
-billType.value = ""
-totalBill = 0;
- smsTotal = 0;
-callTotal = 0;
-totalOne.classList.remove("danger")
-totalOne.classList.remove("warning")
-
-})
 
 function textBillTotal(){
 // get a reference to the textbox where the bill type is to be entered
@@ -44,11 +28,17 @@ var totalOne = document.querySelector(".totalOne");
     smsTotalOne.innerHTML = smsTotal.toFixed(2);
     totalOne.innerHTML = totalBill;
 
-    if (totalBill>=50) {
+      if (totalBill>=50) {
         totalOne.classList.add("danger")
+        totalOne.classList.remove("warning")
       }else if (totalBill>=30) {
         totalOne.classList.add("warning")
+        totalOne.classList.remove("danger")
+      }else{
+        totalOne.classList.remove("warning")
+        totalOne.classList.remove("danger")
       }
+      
 }
 //add an event listener for when the add button is pressed
 addBtn.addEventListener("click", textBillTotal)

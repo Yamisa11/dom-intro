@@ -1,6 +1,5 @@
 var radioAdd = document.querySelector(".radioAdd");
 var settingAddBtn = document.querySelector(".updateSettings");
-var refreshSettings = document.querySelector(".refreshSettings")
 
 var settingsTotalBill = 0;
 var settingsTotalSms = 0;
@@ -10,12 +9,22 @@ var callCostSetting;
 var smsCostSetting;
 var criticalSetting;
 var warningSetting;
+
 settingAddBtn.addEventListener("click", function(){
+  
+
    callCostSetting = document.querySelector(".callCostSetting").value;
    smsCostSetting = document.querySelector(".smsCostSetting").value;
    criticalSetting = document.querySelector(".criticalLevelSetting").value;
    warningSetting = document.querySelector(".warningLevelSetting").value;
  console.log(callCostSetting+smsCostSetting+warningSetting+criticalSetting)
+
+ if (settingsTotalBill!= 0) {
+  if (criticalSetting> settingsTotalBill) {
+    radioAdd.disabled = false;
+  }else {alert("critical level cannot be lower than current Total")}
+ }
+
   return callCostSetting, smsCostSetting,criticalSetting,warningSetting
 })
 
@@ -31,6 +40,10 @@ function settingsAddCost() {
   var checkedSettingBtn = document.querySelector(
     "input[name='billItemTypeWithSettings']:checked"
   );
+
+  if (callCostSetting) {
+    
+  }
   
   if (checkedSettingBtn) {
     var billItemTypeOfSetting = checkedSettingBtn.value;
@@ -50,42 +63,22 @@ console.log(callCostSetting+" "+smsCostSetting+ billItemTypeOfSetting)
 
   if (settingsTotalBill >= criticalSetting) {
     totalSettings.classList.add("danger");
+    totalSettings.classList.remove("warning")
+    radioAdd.disabled = true;
+    
   } else if (settingsTotalBill >= warningSetting) {
     totalSettings.classList.add("warning");
-  }
+    totalSettings.classList.remove("danger")
+  } else{ totalSettings.classList.remove("warning");
+  totalSettings.classList.remove("danger")
+}
+
+
 }
 //add an event listener for when the add button is pressed
 radioAdd.addEventListener("click", settingsAddCost);
 
-refreshSettings.addEventListener("click",function() {
-  // var callCostSetting = document.querySelector(".callCostSetting").value;
-  // var smsCostSetting = document.querySelector(".smsCostSetting").value;
-  // var criticalSetting = document.querySelector(".criticalLevelSetting").value;
-  // var warningSetting = document.querySelector(".warningLevelSetting").value;
 
-  var callTotalSettings = document.querySelector(".callTotalSettings");
-  var smsTotalSettings = document.querySelector(".smsTotalSettings");
-  var totalSettings = document.querySelector(".totalSettings");
-
-   
-
-   callTotalSettings.innerHTML= "0.00";
-   smsTotalSettings.innerHTML= "0.00"
-   totalSettings.innerHTML = "0.00"
-
- settingsTotalBill = 0;
- settingsTotalSms = 0;
- settingsTotalCalls = 0;
- callCostSetting=0;
- smsCostSetting=0;
- criticalSetting=0;
- warningSetting=0;
-
-
- totalSettings.classList.remove("danger");
- totalSettings.classList.remove("warning");
-    })
-    
 // settingAddBtn.addEventListener("click", updateSettings);
 
 //in the event listener get the value from the billItemTypeRadio radio buttons
