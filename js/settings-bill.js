@@ -44,9 +44,7 @@ settingAddBtn.addEventListener("click", function () {
 });
 
 function settingsAddCost() {
-  // get a reference to the textbox where the bill type is to be entered
-
-  //create a variable that will keep track of the total bill
+  
   var checkedSettingBtn = document.querySelector(
     "input[name='billItemTypeWithSettings']:checked"
   );
