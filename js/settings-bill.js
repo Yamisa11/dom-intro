@@ -22,9 +22,7 @@ settingAddBtn.addEventListener("click", function () {
   criticalSetting = document.querySelector(".criticalLevelSetting").value;
   warningSetting = document.querySelector(".warningLevelSetting").value;
 
-  if (callCostSetting === 0 || smsCostSetting === 0 || criticalSetting === 0 || warningSetting === 0){
-    alert("Please enter all values")
-  }
+  
 
   if (settingsTotalBill != 0) {
     if (criticalSetting > settingsTotalBill) {
