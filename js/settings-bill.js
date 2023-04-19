@@ -28,6 +28,7 @@ callCostSetting = document.querySelector('.callCostSetting').value;
     if (criticalSetting > settingsTotalBill) {
       radioAdd.disabled = false;
       totalSettings.classList.remove("danger");
+      
       totalSettings.classList.add("warning");
     } else {
       alert("critical level cannot be lower than current Total");
