@@ -17,12 +17,12 @@ var totalSettings = document.querySelector(".totalSettings");
 
 settingAddBtn.addEventListener("click", function () {
   var totalSettings = document.querySelector(".totalSettings");
-
+callCostSetting = document.querySelector('.callCostSetting').value;
   smsCostSetting = document.querySelector(".smsCostSetting").value;
   criticalSetting = document.querySelector(".criticalLevelSetting").value;
   warningSetting = document.querySelector(".warningLevelSetting").value;
 
-  
+
 
   if (settingsTotalBill != 0) {
     if (criticalSetting > settingsTotalBill) {
