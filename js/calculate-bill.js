@@ -11,12 +11,12 @@ var refreshCalculate = document.querySelector(".refreshCalculate");
 //get a reference to the billTotal element
 var billTotal = document.querySelector(".billTotal");
 //get a reference to the billString
-var billString = document.querySelector(".billString").value;
-var billStringCapital = billString.toUpperCase();
-var billList = billStringCapital.split(",");
+
 
 function calculateBtnClicked() {
- 
+  var billString = document.querySelector(".billString").value;
+  var billStringCapital = billString.toUpperCase();
+  var billList = billStringCapital.split(",");
   var totalSumBill = 0;
 
   for (let i = 0; i < billList.length; i++) {

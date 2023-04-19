@@ -5,10 +5,10 @@ var settingsTotalBill = 0;
 var settingsTotalSms = 0;
 var settingsTotalCalls = 0;
 
-var callCostSetting;
-var smsCostSetting;
-var criticalSetting;
-var warningSetting;
+var callCostSetting =0;
+var smsCostSetting=0;
+var criticalSetting=0;
+var warningSetting=0;
 
 var callTotalSettings = document.querySelector(".callTotalSettings");
 var smsTotalSettings = document.querySelector(".smsTotalSettings");
@@ -22,6 +22,10 @@ settingAddBtn.addEventListener("click", function () {
   smsCostSetting = document.querySelector(".smsCostSetting").value;
   criticalSetting = document.querySelector(".criticalLevelSetting").value;
   warningSetting = document.querySelector(".warningLevelSetting").value;
+
+  if (callCostSetting === 0 || smsCostSetting === 0 || criticalSetting === 0 || warningSetting === 0){
+    alert("Please enter all values")
+  }
 
   if (settingsTotalBill != 0) {
     if (criticalSetting > settingsTotalBill) {
@@ -50,11 +54,12 @@ function settingsAddCost() {
   );
  
 
-  if (callCostSetting) {
-  }
+
 
   if (checkedSettingBtn) {
     var billItemTypeOfSetting = checkedSettingBtn.value;
+  } else{
+    alert("Please click cost type")
   }
 
   if (billItemTypeOfSetting === "sms") {
@@ -64,6 +69,7 @@ function settingsAddCost() {
     settingsTotalCalls = settingsTotalCalls + parseFloat(callCostSetting);
   }
 
+  
   settingsTotalBill = settingsTotalSms + settingsTotalCalls;
   callTotalSettings.innerHTML = settingsTotalCalls.toFixed(2);
   smsTotalSettings.innerHTML = settingsTotalSms.toFixed(2);
