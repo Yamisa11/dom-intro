@@ -8,10 +8,11 @@ var totalSettings = document.querySelector(".totalSettings");
 var totalCost = 0;
 
 function updateSettingButton() {
-  var callCostValue = document.querySelector(".callCostSetting").value;
-  var smsCostValue = document.querySelector(".smsCostSetting").value;
+  var callCostValue = parseFloat(document.querySelector(".callCostSetting").value);
+  var smsCostValue = parseFloat(document.querySelector(".smsCostSetting").value);
   var warningLevelSetting = document.querySelector(".warningLevelSetting").value;
   var criticalLevelSetting = document.querySelector(".criticalLevelSetting").value;
+  
 
   billSettings.setCallCost(callCostValue);
   billSettings.setSmsCost(smsCostValue);
