@@ -10,8 +10,8 @@ var totalCost = 0;
 function updateSettingButton() {
   var callCostValue = parseFloat(document.querySelector(".callCostSetting").value);
   var smsCostValue = parseFloat(document.querySelector(".smsCostSetting").value);
-  var warningLevelSetting = document.querySelector(".warningLevelSetting").value;
-  var criticalLevelSetting = document.querySelector(".criticalLevelSetting").value;
+  var warningLevelSetting = parseFloat(document.querySelector(".warningLevelSetting").value)
+  var criticalLevelSetting = parseFloat(document.querySelector(".criticalLevelSetting").value)
   
 
   billSettings.setCallCost(callCostValue);
@@ -38,9 +38,9 @@ function addCostButton() {
     billSettings.makeCall();
   }
 
-  callTotalSettings.innerHTML = billSettings.getTotalCallCost();
-  smsTotalSettings.innerHTML = billSettings.getTotalSmsCost();
-  totalSettings.innerHTML = billSettings.getTotalCost();
+  callTotalSettings.innerHTML = billSettings.getTotalCallCost().toFixed(2);
+  smsTotalSettings.innerHTML = billSettings.getTotalSmsCost().toFixed(2);
+  totalSettings.innerHTML = billSettings.getTotalCost().toFixed(2);
 }
 
 radioAdd.addEventListener("click", addCostButton);
