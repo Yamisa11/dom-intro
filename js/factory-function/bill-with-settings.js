@@ -59,11 +59,10 @@ function billWithSettings() {
     return getTotalCost() >= getCriticalLevel();
   }
   function totalClassName() {
-    if (hasReachedCriticalLevel()) {
-      return "critical";
-    }else if (getTotalCost() >= getWarningLevel()) {
-      return "warning";
-    }
+      return "danger";
+  }
+  function totalClassName2(){
+    return "warning";
   }
 
   return {
@@ -81,5 +80,7 @@ function billWithSettings() {
     getTotalCost,
     sendSms,
     totalClassName,
+    hasReachedCriticalLevel,
+    totalClassName2
   };
 }

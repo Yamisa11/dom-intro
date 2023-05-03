@@ -19,15 +19,19 @@ function updateSettingButton() {
   billSettings.setWarningLevel(warningLevelSetting);
   billSettings.setCriticalLevel(criticalLevelSetting);
 
-  console.log(
-    callCostValue,
-    smsCostValue,
-    warningLevelSetting,
-    criticalLevelSetting
-  );
+  if (billSettings.getTotalCost()< criticalLevelSetting && billSettings.getTotalCost()>warningLevelSetting) {
+    totalSettings.classList.remove(billSettings.totalClassName())
+    totalSettings.classList.add(billSettings.totalClassName2())
+  }else if (billSettings.getTotalCost()<warningLevelSetting) {
+    totalSettings.classList.remove(billSettings.totalClassName2())
+    totalSettings.classList.remove(billSettings.totalClassName())
+  }
+
 }
 
 function addCostButton() {
+  var warningLevelSetting = parseFloat(document.querySelector(".warningLevelSetting").value)
+  
   var checkedRadio = document.querySelector(
     'input[class="billItemTypeWithSettings"]:checked'
   );
@@ -41,6 +45,14 @@ function addCostButton() {
   callTotalSettings.innerHTML = billSettings.getTotalCallCost().toFixed(2);
   smsTotalSettings.innerHTML = billSettings.getTotalSmsCost().toFixed(2);
   totalSettings.innerHTML = billSettings.getTotalCost().toFixed(2);
+
+  if (billSettings.hasReachedCriticalLevel()) {
+    totalSettings.classList.add(billSettings.totalClassName())
+    totalSettings.classList.remove(billSettings.totalClassName2())
+  }else if (billSettings.getTotalCost()>= warningLevelSetting) {
+    totalSettings.classList.add(billSettings.totalClassName2())
+    totalSettings.classList.remove(billSettings.totalClassName())
+  }
 }
 
 radioAdd.addEventListener("click", addCostButton);
