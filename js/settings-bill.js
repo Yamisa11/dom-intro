@@ -1,11 +1,10 @@
-var billSettings = billWithSettings();
+var billSettings = BillWithSettings();
 var updateBtn = document.querySelector(".updateSettings");
 var radioAdd = document.querySelector(".radioAdd");
 var callTotalSettings = document.querySelector(".callTotalSettings");
 var smsTotalSettings = document.querySelector(".smsTotalSettings");
 var totalSettings = document.querySelector(".totalSettings");
 
-var totalCost = 0;
 
 function updateSettingButton() {
   var callCostValue = parseFloat(document.querySelector(".callCostSetting").value);
@@ -20,11 +19,11 @@ function updateSettingButton() {
   billSettings.setCriticalLevel(criticalLevelSetting);
 
   if (billSettings.getTotalCost()< criticalLevelSetting && billSettings.getTotalCost()>warningLevelSetting) {
-    totalSettings.classList.remove(billSettings.totalClassName())
-    totalSettings.classList.add(billSettings.totalClassName2())
+    totalSettings.classList.remove(billSettings.totalClassNameDanger())
+    totalSettings.classList.add(billSettings.totalClassNameWarning())
   }else if (billSettings.getTotalCost()<warningLevelSetting) {
-    totalSettings.classList.remove(billSettings.totalClassName2())
-    totalSettings.classList.remove(billSettings.totalClassName())
+    totalSettings.classList.remove(billSettings.totalClassNameWarning())
+    totalSettings.classList.remove(billSettings.totalClassNameDanger())
   }
 
 }
@@ -47,11 +46,11 @@ function addCostButton() {
   totalSettings.innerHTML = billSettings.getTotalCost().toFixed(2);
 
   if (billSettings.hasReachedCriticalLevel()) {
-    totalSettings.classList.add(billSettings.totalClassName())
-    totalSettings.classList.remove(billSettings.totalClassName2())
+    totalSettings.classList.add(billSettings.totalClassNameDanger())
+    totalSettings.classList.remove(billSettings.totalClassNameWarning())
   }else if (billSettings.getTotalCost()>= warningLevelSetting) {
-    totalSettings.classList.add(billSettings.totalClassName2())
-    totalSettings.classList.remove(billSettings.totalClassName())
+    totalSettings.classList.add(billSettings.totalClassNameWarning())
+    totalSettings.classList.remove(billSettings.totalClassNameDanger())
   }
 }
 
